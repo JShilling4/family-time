@@ -5,8 +5,13 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+const apiKey = process.env.EXPO_PUBLIC_FIREBASE_API_KEY;
+if (!apiKey) {
+  throw new Error("Missing EXPO_PUBLIC_FIREBASE_API_KEY in environment");
+}
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBF-I_5YgNKVyMc1v-4wCSC_-DNl1OC96I",
+  apiKey,
   authDomain: "family-time-a2169.firebaseapp.com",
   projectId: "family-time-a2169",
   storageBucket: "family-time-a2169.firebasestorage.app",
