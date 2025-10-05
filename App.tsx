@@ -1,20 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import RootNavigator from './src/navigation/RootNavigator';
+import { configureNotificationHandling, requestNotificationPermissions } from './src/lib/notifications';
 
 export default function App() {
+  useEffect(() => {
+    configureNotificationHandling();
+    requestNotificationPermissions();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
+      <RootNavigator />
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
